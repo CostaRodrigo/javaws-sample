@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+
+	<persistence-unit name="maquina-core-jpa" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>jdbc/poolGM</jta-data-source>
+	
+		<class>br.com.maquinapr.entities.Agendamentodisparo</class>
+		<class>br.com.maquinapr.entities.Contato</class>
+		<class>br.com.maquinapr.entities.Contatogrupo</class>
+		<class>br.com.maquinapr.entities.Historicoenvio</class>
+		<class>br.com.maquinapr.entities.Logdisparo</class>
+		<class>br.com.maquinapr.entities.Logoassinatura</class>
+		<class>br.com.maquinapr.entities.Logocliente</class>
+		<class>br.com.maquinapr.entities.Logomaquina</class>
+		<class>br.com.maquinapr.entities.Logoproduto</class>
+		<class>br.com.maquinapr.entities.Logotemplate</class>
+		<class>br.com.maquinapr.entities.Modelo</class>
+		<class>br.com.maquinapr.entities.Modelotitulo</class>
+		<class>br.com.maquinapr.entities.Noticia</class>
+		<class>br.com.maquinapr.entities.Noticiaclipping</class>
+		<class>br.com.maquinapr.entities.Produto</class>
+		<class>br.com.maquinapr.entities.Sender</class>
+		
+		<properties>
+		
+		<!-- Local values		
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/maquinapr"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="rafaela"/>
+			 -->
+		<!-- 
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://54.232.100.115:3306/maquinapr"/>
+			<property name="javax.persistence.jdbc.user" value="userportal"/>
+			<property name="javax.persistence.jdbc.password" value="maquinaPR"/>
+		-->
+			<property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="false" />
+            <property name="hibernate.use_sql_comments" value="false" />
+            <property name="hibernate.jdbc.wrap_result_sets" value="false" />
+            <property name="hibernate.hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.connection.datasource" value="java:comp/env/jdbc/maquinaPR"/>  
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySqlDialect" /> 
+            
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.maquina.core.br/domain" xmlns:tns="http://www.maquina.core.br/domain" elementFormDefault="qualified" xmlns:Q1="http://www.maquina.core.br/domain">
+
+
+    <complexType name="ContatoGrupo">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="status" type="long"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Contato">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="email" type="string"></element>
+    		<element name="tipo" type="long"></element>
+    		<element name="dataExpiracao" type="date"></element>
+    		<element name="limiteDiario" type="long"></element>
+    		<element name="ativo" type="long"></element>
+    		<element name="contatoGrupo" type="tns:ContatoGrupo" />    		
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogoTemplate">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="arquivo" type="string"></element>
+    		<element name="path" type="string"></element>
+    		<element name="corfundoRGB1" type="string"></element>
+    		<element name="corfundoRGB2" type="string"></element>
+    		<element name="topo" type="string"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogoProduto">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="arquivo" type="string"></element>
+    		<element name="texto" type="string"></element>
+    		<element name="modulo" type="long"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogoMaquina">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="arquivo" type="string"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogoCliente">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="arquivo" type="string"></element>
+    		<element name="produto" type="string"></element>
+    		<element name="template" type="string"></element>
+    		<element name="mailing" type="string"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogoAssinatura">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="arquivo" type="string"></element>
+    		<element name="texto" type="string"></element>
+    		<element name="ativo" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Modelo">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="templateExterno" type="string"></element>
+    		<element name="tituloEmail" type="string"></element>
+    		<element name="logoTemplate" type="tns:LogoTemplate"></element>
+    		<element name="logoMaquina" type="tns:LogoMaquina"></element>
+    		<element name="logoCliente" type="tns:LogoCliente"></element>
+    		<element name="logoProduto" type="tns:LogoProduto"></element>
+    		<element name="logoAssinatura" type="tns:LogoAssinatura"></element>
+    		<element name="sender" type="tns:Sender"></element>
+    		<element name="contatoGrupo" type="tns:ContatoGrupo"></element>
+    		
+    	</sequence>
+    </complexType>
+
+    <complexType name="ModeloTitulo">
+    	<sequence>
+    	            <element name="id" type="long"></element>
+    		<element name="modelo" type="tns:Modelo"></element>
+    		<element name="titulo" type="string"></element>
+    		<element name="ordem" type="long"></element>
+    		<element name="conteudo" type="string"></element>
+    		<element name="data" type="long"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Sender">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="nome" type="string"></element>
+    		<element name="email" type="string"></element>
+    		<element name="smtp" type="string"></element>
+    		<element name="usuario" type="string"></element>
+    		<element name="senha" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Produto">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="data" type="date"></element>
+    		<element name="templateExterno" type="string"></element>
+    		<element name="observacoes" type="string"></element>
+    		<element name="tituloEmail" type="string"></element>
+    		<element name="tipo" type="long"></element>
+    		<element name="ativo" type="long"></element>
+    		<element name="aplicarlogo" type="long"></element>
+    		<element name="modelo" type="tns:Modelo"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Noticia">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="titulo" type="string"></element>
+    		<element name="conteudo" type="string"></element>
+    		<element name="ordem" type="long"></element>
+    		<element name="destaque" type="long"></element>
+    		<element name="editada" type="long"></element>
+    		<element name="produto" type="tns:Produto"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="NoticiaClipping">
+    	<sequence>
+    		<element name="id" type="long"></element>
+    		<element name="webURL" type="string"></element>
+    		<element name="mobileURL" type="string"></element>
+    		<element name="noticia" type="tns:Noticia"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="HistoricoEnvio">
+    	<sequence>
+            <element name="id" type="long"></element>
+    		<element name="contato" type="tns:Contato"></element>
+    		<element name="produto" type="tns:Produto"></element>
+    		<element name="assunto" type="string"></element>
+    		<element name="emailFrom" type="string"></element>
+    		<element name="emailContato" type="string"></element>
+    		<element name="acessos" type="long"></element>
+    		<element name="dataEnvio" type="dateTime"></element>
+    		<element name="dataAgendamento" type="dateTime"></element>
+    		<element name="observacoes" type="string"></element>
+    		<element name="sucesso" type="long"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="Disparo">
+    	<sequence>
+            <element name="modelo" type="tns:Modelo"></element>
+            <element name="id" type="long"></element>
+    		<element name="dataDisparo" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LogDisparo">
+    	<sequence>
+    	            <element name="id" type="long"></element>
+            <element name="idDisparo" type="long"></element>
+    		<element name="dataHoraEnvio" type="dateTime"></element>
+    		<element name="status" type="string"></element>
+    		<element name="excecao" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AgendamentoDisparo">
+    	<sequence>
+    	            <element name="id" type="long"></element>
+            <element name="idDisparo" type="long"></element>
+    		<element name="dataHoraAgendamento" type="dateTime"></element>
+    		<element name="status" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="logoTemplate" type="tns:LogoTemplate"/>
+    <element name="logoProduto" type="tns:LogoProduto"/>
+    <element name="logoMaquina" type="tns:LogoMaquina"/>
+    <element name="logoCliente" type="tns:LogoCliente"/>
+    <element name="logoAssinatura" type="tns:LogoAssinatura"/>
+    <element name="modeloTitulo" type="tns:ModeloTitulo"/>
+    <element name="sender" type="tns:Sender"/>
+    <element name="contatoGrupo" type="tns:ContatoGrupo"/>
+    <element name="contato" type="tns:Contato"/>
+    <element name="produto" type="tns:Produto"/>
+    <element name="noticia" type="tns:Noticia"/>
+    <element name="noticiaClipping" type="tns:NoticiaClipping"/>
+    <element name="historicoEnvio" type="tns:HistoricoEnvio"/>
+    <element name="modelo" type="tns:Modelo"/>
+    <element name="agendamentoDisparo" type="tns:AgendamentoDisparo"/>
+    <element name="logDisparo" type="tns:LogDisparo"/>
+    <element name="disparo" type="tns:Disparo"/>
+    
+  <element name="listaLogoTemplates" type="tns:listaLogoTemplate"/> 
+  <complexType name="listaLogoTemplate">
+    <sequence>
+      <element name="logoTemplate"  type="tns:LogoTemplate" minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+    
+    
+  <element name="listaLogoProdutos" type="tns:listaLogoProduto"/> 
+  <complexType name="listaLogoProduto">
+    <sequence>
+<element name="logoProduto" type="tns:LogoProduto" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaLogoMaquinas" type="tns:listaLogoMaquina"/> 
+  <complexType name="listaLogoMaquina">
+    <sequence>
+    <element name="logoMaquina" type="tns:LogoMaquina" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaLogoClientes" type="tns:listaLogoCliente"/> 
+  <complexType name="listaLogoCliente">
+    <sequence>
+    <element name="logoCliente" type="tns:LogoCliente" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaLogoAssinaturas" type="tns:listaLogoAssinatura"/> 
+  <complexType name="listaLogoAssinatura">
+    <sequence>
+    <element name="logoAssinatura" type="tns:LogoAssinatura" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaModeloTitulos" type="tns:listaModeloTitulo"/> 
+  <complexType name="listaModeloTitulo">
+    <sequence>
+    <element name="modeloTitulo" type="tns:ModeloTitulo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaSenders" type="tns:listaSender"/> 
+  <complexType name="listaSender">
+    <sequence>
+    <element name="sender" type="tns:Sender" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaContatoGrupos" type="tns:listaContatoGrupo"/> 
+  <complexType name="listaContatoGrupo">
+    <sequence>
+    <element name="contatoGrupo" type="tns:ContatoGrupo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaContatos" type="tns:listaContato"/> 
+  <complexType name="listaContato">
+    <sequence>
+    <element name="contato" type="tns:Contato" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaProdutos" type="tns:listaProduto"/> 
+  <complexType name="listaProduto">
+    <sequence>
+    <element name="produto" type="tns:Produto" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaNoticias" type="tns:listaNoticia"/> 
+  <complexType name="listaNoticia">
+    <sequence>
+    <element name="noticia" type="tns:Noticia" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaNoticiaClippings" type="tns:listaNoticiaClipping"/> 
+  <complexType name="listaNoticiaClipping">
+    <sequence>
+    <element name="noticiaClipping" type="tns:NoticiaClipping" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaHistoricoEnvios" type="tns:listaHistoricoEnvio"/> 
+  <complexType name="listaHistoricoEnvio">
+    <sequence>
+    <element name="historicoEnvio" type="tns:HistoricoEnvio" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaModelos" type="tns:listaModelo"/> 
+  <complexType name="listaModelo">
+    <sequence>
+    <element name="modelo" type="tns:Modelo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaAgendamentoDisparos" type="tns:listaAgendamentoDisparo"/> 
+  <complexType name="listaAgendamentoDisparo">
+    <sequence>
+    <element name="agendamentoDisparo" type="tns:AgendamentoDisparo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaLogDisparos" type="tns:listaLogDisparo"/> 
+  <complexType name="listaLogDisparo">
+    <sequence>
+    <element name="logDisparo" type="tns:LogDisparo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <element name="listaDisparos" type="tns:listaDisparo"/> 
+  <complexType name="listaDisparo">
+    <sequence>
+    <element name="disparo" type="tns:Disparo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+    
+
+
+</schema>
